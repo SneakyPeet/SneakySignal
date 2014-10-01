@@ -126,13 +126,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SignalR\Startup.cs" />
+    <Compile Include="MotionR\OrientationData.cs" />
+    <Compile Include="MotionR\Startup.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="SignalR\MotionHub.cs" />
+    <Compile Include="MotionR\MotionHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

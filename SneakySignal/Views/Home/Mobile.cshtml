@@ -4,4 +4,25 @@
 }
 
 <h2>Mobile</h2>
+<button id="notify">test</button>
+
+<script>
+    $(function() {
+        var hub = $.connection.motionHub;
+        var connectionId;
+        
+        hub.client.setConnectionId = function (id) {
+            alert('id set');
+            connectionId = id;
+        };
+        
+        $.connection.hub.start().done(function () {
+            $('#notify').click(function () {
+                if (connectionId) {
+                    hub.server.orientationChanged(connectionId,{ x: 1, y: 2});
+                }
+            });
+        });
+    });
+</script>
 

@@ -5,3 +5,27 @@
 
 <h2>Desktop</h2>
 
+<button id="connect">test</button>
+
+<script>
+    $(function() {
+        var hub = $.connection.motionHub;
+        
+        hub.client.OrientationChanged = function (orientation) {
+            alert('orientation');
+        };
+        
+        $.connection.hub.start().done(function () {
+            var connectionId;
+            hub.server.getConnectionId().done(function(id) {
+                connectionId = id;
+            });
+            $('#connect').click(function () {
+                if (connectionId) {
+                    hub.server.setConnectionId();
+                }
+            });
+        });
+    });
+</script>
+
