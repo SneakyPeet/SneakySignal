@@ -8,9 +8,9 @@ namespace SneakySignal.Controllers
         {
             if (Request.Browser.IsMobileDevice)
             {
-                RedirectToAction("Mobile");
+                return RedirectToAction("Mobile");
             }
-            RedirectToAction("Desktop");
+            return RedirectToAction("Desktop");
         }
         
         public ActionResult Desktop()
