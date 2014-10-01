@@ -1,4 +1,4 @@
-﻿
+﻿@model SneakySignal.ViewModel.MobileViewModel
 @{
     ViewBag.Title = "Mobile";
 }
@@ -7,22 +7,10 @@
 <button id="notify">test</button>
 
 <script>
-    $(function() {
-        var hub = $.connection.motionHub;
-        var connectionId;
-        
-        hub.client.setConnectionId = function (id) {
-            alert('id set');
-            connectionId = id;
-        };
-        
-        $.connection.hub.start().done(function () {
-            $('#notify').click(function () {
-                if (connectionId) {
-                    hub.server.orientationChanged(connectionId,{ x: 1, y: 2});
-                }
-            });
-        });
+    var app;
+    $(document).ready(function() {
+        app = MobileApp('@Model.ConnectionId');
+        app.init();
     });
 </script>
 

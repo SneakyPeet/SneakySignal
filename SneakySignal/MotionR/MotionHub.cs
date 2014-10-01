@@ -9,14 +9,20 @@ namespace SneakySignal
             return Context.ConnectionId;
         }
 
-        public void SetConnectionId()
+        public void ClientConnected(string connectionId)
         {
-            Clients.Others.setConnectionId(Context.ConnectionId);
+            var clientId = Context.ConnectionId;
+            Clients.Client(connectionId).clientConnected(clientId);
         }
 
         public void OrientationChanged(string connectionId, OrientationData orientationData)
         {
             Clients.Client(connectionId).orientationChanged(orientationData);
+        }
+
+        public void StartExecution(string connectionId)
+        {
+            Clients.Client(connectionId).startExecution();
         }
     }
 }

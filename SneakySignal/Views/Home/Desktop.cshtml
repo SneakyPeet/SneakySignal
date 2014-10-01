@@ -1,31 +1,16 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Desktop";
 }
 
 <h2>Desktop</h2>
 
-<button id="connect">test</button>
+<h3 id="connectUrl"></h3>
 
 <script>
-    $(function() {
-        var hub = $.connection.motionHub;
-        
-        hub.client.OrientationChanged = function (orientation) {
-            alert('orientation');
-        };
-        
-        $.connection.hub.start().done(function () {
-            var connectionId;
-            hub.server.getConnectionId().done(function(id) {
-                connectionId = id;
-            });
-            $('#connect').click(function () {
-                if (connectionId) {
-                    hub.server.setConnectionId();
-                }
-            });
-        });
+    var app;
+    $(document).ready(function() {
+        app = DesktopApp('#connectUrl');
+        app.init();
     });
 </script>
 

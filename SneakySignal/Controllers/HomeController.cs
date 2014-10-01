@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using SneakySignal.ViewModel;
 
 namespace SneakySignal.Controllers
 {
@@ -6,21 +7,13 @@ namespace SneakySignal.Controllers
     {
         public ActionResult Index()
         {
-            if (Request.Browser.IsMobileDevice)
-            {
-                return RedirectToAction("Mobile");
-            }
-            return RedirectToAction("Desktop");
+            return View("Desktop");
         }
-        
-        public ActionResult Desktop()
+
+        public ActionResult Mobile(string connectionId)
         {
-            return View();
+            var vm = new MobileViewModel { ConnectionId = connectionId };
+            return View(vm);
         }
-        
-        public ActionResult Mobile()
-        {
-            return View();
-        }
-	}
+    }
 }
