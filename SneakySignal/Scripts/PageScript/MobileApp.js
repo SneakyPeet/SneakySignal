@@ -51,7 +51,7 @@
             hub.server.orientationChanged(connectionId, orientation);
             hasUpdate = false;
         }
-        setTimeout(sendUpdate, 50);
+        setTimeout(sendUpdate, 100);
     };
 
     return Object.freeze({
