@@ -2,7 +2,8 @@ namespace SneakySignal
 {
     public class OrientationData
     {
-        public int x { get; set; }
-        public int y { get; set; }
+        public decimal Alpha { get; set; }
+        public decimal Beta { get; set; }
+        public decimal Gamma { get; set; }
     }
 }

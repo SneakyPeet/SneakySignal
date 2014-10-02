@@ -5,14 +5,17 @@
     var ulrElement = $(urlElementId);
     var qrCodeElement = $(qrCodeElementId);
 
-    hub.client.OrientationChanged = function (orientation) {
-        alert('orientation');
+    hub.client.orientationChanged = function (orientation) {
+        $('#alpha').html(orientation.Alpha);
+        $('#beta').html(orientation.Beta);
+        $('#gamma').html(orientation.Gamma);
     };
     
     hub.client.ClientConnected = function (clientId) {
         if (!isConnected) {
             isConnected = true;
             ulrElement.html('Connected');
+            qrCodeElement.hide();
             clientConnectionId = clientId;
             hub.server.startExecution(clientConnectionId);
         }
