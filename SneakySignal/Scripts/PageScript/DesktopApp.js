@@ -1,4 +1,4 @@
-﻿function DesktopApp(urlElementId) {
+﻿function DesktopApp(urlElementId,qrCodeElementId) {
     var hub = $.connection.motionHub;
     var isConnected = false;
     var clientConnectionId;
@@ -22,6 +22,7 @@
             hub.server.getConnectionId().done(function (id) {
                 var url = window.location.origin + '/Home/Mobile?connectionId=' + id;
                 $(urlElementId).html(url);
+                new QRCode(document.getElementById(qrCodeElementId), url);
             });
         });
     };

@@ -5,11 +5,12 @@
 <h2>Desktop</h2>
 
 <h3 id="connectUrl"></h3>
+<div id="qrcode"></div>
 
 <script>
     var app;
     $(document).ready(function() {
-        app = DesktopApp('#connectUrl');
+        app = DesktopApp('#connectUrl', 'qrcode');
         app.init();
     });
 </script>
