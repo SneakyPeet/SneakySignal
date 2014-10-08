@@ -29,7 +29,7 @@
     setAplha = function(context, alpha) {
         context.fillStyle = "#FF7777";
         context.font = "14px Verdana";
-        context.fillText("Alpha: " + Math.Round(alpha), 10, 20);
+        context.fillText("Alpha: " + Math.round(alpha), 10, 20);
         context.beginPath();
         context.moveTo(180, 75);
         context.lineTo(210, 75);
