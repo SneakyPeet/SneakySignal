@@ -2,19 +2,26 @@
     ViewBag.Title = "Desktop";
 }
 
-<h2>Desktop</h2>
-
 <h3 id="connectUrl"></h3>
-<div id="qrcode"></div>
 
-<label >alpha:</label><span id="alpha">no</span>
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+        <div  id="qrcode"></div>
+        <canvas id="myCanvas" width="360" height="450" style="border:1px solid #d3d3d3;" hidden="hidden">
+</canvas>
+    </div>
+</div>
+
+
+
+@*<label >alpha:</label><span id="alpha">no</span>
 <label >beta:</label><span id="beta">no</span>
-<label >gama:</label><span id="gamma">no</span>
+<label >gama:</label><span id="gamma">no</span>*@
 
 <script>
     var app;
     $(document).ready(function() {
-        app = DesktopApp('#connectUrl', '#qrcode');
+        app = DesktopApp('#connectUrl', '#qrcode', 'myCanvas');
         app.init();
     });
 </script>

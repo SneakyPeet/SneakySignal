@@ -1,24 +1,54 @@
-﻿function DesktopApp(urlElementId,qrCodeElementId) {
+﻿function DesktopApp(urlElementId,qrCodeElementId,canvaseId) {
     var hub = $.connection.motionHub;
     var isConnected = false;
     var clientConnectionId;
     var ulrElement = $(urlElementId);
     var qrCodeElement = $(qrCodeElementId);
+    var setAplha, setBeta, setGama;
+    
 
     hub.client.orientationChanged = function (orientation) {
-        $('#alpha').html(orientation.Alpha);
-        $('#beta').html(orientation.Beta);
-        $('#gamma').html(orientation.Gamma);
+        var canvas = document.getElementById(canvaseId);
+        var context = canvas.getContext("2d");
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        setAplha(context, orientation.Alpha);
+        setBeta(context, orientation.Alpha);
+        setGama(context, orientation.Alpha);
     };
     
     hub.client.ClientConnected = function (clientId) {
         if (!isConnected) {
             isConnected = true;
-            ulrElement.html('Connected');
             qrCodeElement.hide();
+            $('#' + canvaseId).show();
             clientConnectionId = clientId;
             hub.server.startExecution(clientConnectionId);
         }
+    };
+
+    setAplha = function(context, alpha) {
+        context.fillStyle = "#FF7777";
+        context.font = "14px Verdana";
+        context.fillText("Alpha: " + Math.Round(alpha), 10, 20);
+        context.beginPath();
+        context.moveTo(180, 75);
+        context.lineTo(210, 75);
+        context.arc(180, 75, 60, 0, alpha * Math.PI / 180);
+        context.fill();
+    };
+    
+    setBeta = function (context, beta) {
+        context.fillStyle = "#FF6600";
+        context.fillText("Beta: " + Math.round(beta), 10, 140);
+        context.beginPath();
+        context.fillRect(180, 150, beta, 90);
+    };
+    
+    setGama = function (context, gamma) {
+        context.fillStyle = "#FF0000";
+        context.fillText("Gamma: " + Math.round(gamma), 10, 270);
+        context.beginPath();
+        context.fillRect(90, 340, 180, gamma);
     };
 
     var init = function() {

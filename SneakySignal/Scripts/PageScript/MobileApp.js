@@ -39,7 +39,7 @@
             orientation.beta = event.beta;
             hasUpdate = true;
         }
-        if (event.alpha) {
+        if (event.gamma) {
             $('#gamma').html(event.gamma);
             orientation.gamma = event.gamma;
             hasUpdate = true;
