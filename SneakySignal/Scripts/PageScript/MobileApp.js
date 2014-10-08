@@ -7,11 +7,11 @@
         gamma: 0
     };
     var hasUpdate = false;
-    var status = $(statusId);
+    var status = document.getElementById(statusId);
     
     hub.client.StartExecution = function () {
         if (window.DeviceOrientationEvent) {
-            status.html('Tilt Me');
+            status.innerHTML = 'Tilt Me';
             execute();
         } else {
             alert("Sorry, your browser doesn't support Device Orientation");
@@ -21,7 +21,7 @@
     var init = function() {
         $.connection.hub.start().done(function () {
             hub.server.clientConnected(connectionId).done();
-            status.html('Connecting');
+            status.innerHTML = 'Connecting';
         });
     };
 
@@ -33,17 +33,14 @@
 
     updateOrientation = function (event) {
         if (event.alpha) {
-            $('#alpha').html(event.alpha);
             orientation.alpha = event.alpha;
             hasUpdate = true;
         }
         if (event.beta) {
-            $('#beta').html(event.beta);
             orientation.beta = event.beta;
             hasUpdate = true;
         }
         if (event.gamma) {
-            $('#gamma').html(event.gamma);
             orientation.gamma = event.gamma;
             hasUpdate = true;
         }
