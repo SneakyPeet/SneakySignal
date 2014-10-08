@@ -12,8 +12,8 @@
         var context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
         setAplha(context, orientation.Alpha);
-        setBeta(context, orientation.Alpha);
-        setGama(context, orientation.Alpha);
+        setBeta(context, orientation.Beta);
+        setGama(context, orientation.Gamma);
     };
     
     hub.client.ClientConnected = function (clientId) {
