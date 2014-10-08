@@ -3,17 +3,21 @@
     ViewBag.Title = "Mobile";
 }
 
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+        <h1 id="status">Loading</h1>
+    </div>
+</div>
 
 
-<h2 id="status">Mobile</h2>
-<label >alpha:</label><span id="alpha">0</span>
+@*<label >alpha:</label><span id="alpha">0</span>
 <label >beta:</label><span id="beta">0</span>
-<label >gama:</label><span id="gamma">0</span>
+<label >gama:</label><span id="gamma">0</span>*@
 
 <script>
     var app;
     $(document).ready(function() {
-        app = MobileApp('@Model.ConnectionId');
+        app = MobileApp('@Model.ConnectionId', '#status');
         app.init();
     });
 </script>

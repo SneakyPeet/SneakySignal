@@ -1,4 +1,4 @@
-﻿function MobileApp(connectionId) {
+﻿function MobileApp(connectionId,statusId) {
     var hub = $.connection.motionHub;
     var execute, updateOrientation, sendUpdate;
     var orientation = {
@@ -7,9 +7,11 @@
         gamma: 0
     };
     var hasUpdate = false;
+    var status = $(statusId);
     
     hub.client.StartExecution = function () {
         if (window.DeviceOrientationEvent) {
+            status.html('Tilt Me');
             execute();
         } else {
             alert("Sorry, your browser doesn't support Device Orientation");
@@ -19,6 +21,7 @@
     var init = function() {
         $.connection.hub.start().done(function () {
             hub.server.clientConnected(connectionId).done();
+            status.html('Connecting');
         });
     };
 
